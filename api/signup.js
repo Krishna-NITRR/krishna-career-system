@@ -15,6 +15,10 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
   console.error('❌ Supabase environment variables are missing in API route');
 }
 
+if (!SUPABASE_URL) {
+  throw new Error('Missing EXPO_PUBLIC_SUPABASE_URL');
+}
+
 const supabase = createClient(SUPABASE_URL || '', SUPABASE_KEY || '');
 
 module.exports = async function handler(req, res) {

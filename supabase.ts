@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { createClient } from '@supabase/supabase-js';
 
 const SUPABASE_URL = process.env.EXPO_PUBLIC_SUPABASE_URL;

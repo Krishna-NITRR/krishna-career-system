@@ -1,15 +1,14 @@
-import React from 'react';
 import { Pressable, Text, ActivityIndicator } from 'react-native';
-import * as Haptics from 'expo-haptics';
 
-declare module 'react-native' {
-  interface ViewProps {
-    className?: string;
-  }
-
-  interface TextProps {
-    className?: string;
-  }
+let Haptics: any;
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  Haptics = require('expo-haptics');
+} catch {
+  Haptics = {
+    impactAsync: async () => {},
+    ImpactFeedbackStyle: { Light: 'light' },
+  };
 }
 
 function cn(...inputs: Array<string | false | null | undefined>) {
