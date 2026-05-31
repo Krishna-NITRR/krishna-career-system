@@ -1,9 +1,14 @@
 {
-  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
-    { "source": "/api/signup",  "destination": "/api/signup.js"   },
-    { "source": "/api/contact", "destination": "/api/contact.js"  },
-    { "source": "/research-1",  "destination": "/research-1.html" },
-    { "source": "/(.*)",        "destination": "/index.html"       }
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }

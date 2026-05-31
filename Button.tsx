@@ -1,11 +1,19 @@
 import React from 'react';
 import { Pressable, Text, ActivityIndicator } from 'react-native';
 import * as Haptics from 'expo-haptics';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
 
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+declare module 'react-native' {
+  interface ViewProps {
+    className?: string;
+  }
+
+  interface TextProps {
+    className?: string;
+  }
+}
+
+function cn(...inputs: Array<string | false | null | undefined>) {
+  return inputs.filter(Boolean).join(' ');
 }
 
 const variants = {

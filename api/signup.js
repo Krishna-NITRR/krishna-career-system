@@ -32,15 +32,16 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Ensure body exists
-  if (!req.body) {
-    return res.status(400).json({ error: 'Request body is missing' });
+  // Ensure body exists and is an object to prevent server crash
+  // Vercel handles JSON parsing, but explicit validation ensures robustness
+  if (!req.body || typeof req.body !== 'object') {
+    return res.status(400).json({ error: 'Invalid request body' });
   }
 
   const { name, email, stage } = req.body;
 
   // Validate email
-  if (!email || !email.includes('@')) {
+  if (typeof email !== 'string' || !email.includes('@')) {
     return res.status(400).json({ error: 'Valid email is required.' });
   }
 

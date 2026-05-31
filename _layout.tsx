@@ -3,8 +3,8 @@ import { Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 // TypeScript may not have declarations for CSS imports in this project setup.
-// @ts-ignore
 import './css/styles.css';
+import '../global.css';
 
 SplashScreen.preventAutoHideAsync();
 
